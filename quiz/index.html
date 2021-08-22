@@ -47,11 +47,23 @@
             </div>
         </div>
 
+        <!-- display "All Done!" in H1, "your final score is " [time-remaining], "Enter initials " {input} Submit button -->
+        <div class="container">
+            <div id="all-done" style="display: none;">
+                <h1 class="row">All Done!</h1>
+                <p class="row" id="displayScore"></p>
+                <p class="row" id="initialsInput"></p>
+                <button id="initialsBtn" type="submit"></button>
+            </div>
+        </div>
+
         <!-- display high scores (after initals are entered or the high score "link" is clicked) -->
         <div class="contianer">
             <div id="highScores" style="display: none;">
             <h1 id="highScoreDisplay"></h1>
             <div class="col" id=""></div>
+            <button class="buttons" id="goBack">Go Back</button>
+            <button class="buttons" id="clearHS">Clear High Scores</button>
         </div>
         </div>
 

@@ -6,14 +6,14 @@ $("#start-button").on("click", function() {
     countdown();
 });
 
-var timerEl = $("#countdown");
-var startBtn = $("#start-button");
+var timerEl = document.getElementById('countdown');
+var startBtn = document.getElementById('start-button');
 var qIndex = 0;
 var timer = 75;
 
 function countdown() {
     var timeInterval = setInterval(function(){
-        if(timer > 0) {
+        if(timer > 1) {
             timerEl.textContent = timer;
             timer --;
         }
@@ -21,9 +21,7 @@ function countdown() {
             clearInterval(timeInterval);
         }
     }, 1000);
-    console.log(timer)
 }
-
 
 function displayQuestions() {
     var currentQuestion = questions[qIndex];
@@ -32,13 +30,8 @@ function displayQuestions() {
     $("#choice2").text(questions[qIndex].choices[1]);
     $("#choice3").text(questions[qIndex].choices[2]);
     $("#choice4").text(questions[qIndex].choices[3]);
-    console.log(questions[qIndex].choices[0]);
-    console.log(questions[qIndex].choices[1]);
-    console.log(questions[qIndex].choices[2]);
-    console.log(questions[qIndex].choices[3]);
 
     $(".buttons").on("click", function() {
-        console.log($(this)[0].outerText);
         if($(this)[0].outerText === questions[qIndex].answer) {
             qIndex++;
             $("#answerConfirmation").text("Correct!");
@@ -48,12 +41,18 @@ function displayQuestions() {
             qIndex++;
             $("#answerConfirmation").text("Incorrect!")
         };
+        console.log(qIndex);
+
+        if(qIndex === 10){
+            $("#quiz-questions").hide();
+            $("#all-done").show();
+        }
+
     $("#question-title").text(questions[qIndex].title);
     $("#choice1").text(questions[qIndex].choices[0]);
     $("#choice2").text(questions[qIndex].choices[1]);
     $("#choice3").text(questions[qIndex].choices[2]);
     $("#choice4").text(questions[qIndex].choices[3]);
-        
     });
 }
 
@@ -126,5 +125,3 @@ var questions = [
 
 //high scores array of objects (high score and initials)
 //save empty array after clear high score button is pushed, use var to clear high scores
-
-startBtn.onclick = countdown;
