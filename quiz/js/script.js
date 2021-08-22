@@ -2,13 +2,15 @@ $("#start-button").on("click", function() {
     $("#start-screen").hide();
     $("#quiz-questions").show();
     console.log("Quiz has begun");
+    displayQuestions();
 });
 
 var timerEl = document.getElementById('countdown');
 var startBtn = document.getElementById('start-button');
+var qIndex = 0;
+var timer = 75;
 
 function countdown() {
-    var timer = 75;
     var timeInterval = setInterval(function(){
         if(timer > 1) {
             timerEl.textContent = timer;
@@ -19,6 +21,37 @@ function countdown() {
         }
     }, 1000);
     console.log(timer)
+}
+
+
+function displayQuestions() {
+    var currentQuestion = questions[qIndex];
+    $("#question-title").text(questions[qIndex].title);
+    $("#choice1").text(questions[qIndex].choices[0]);
+    $("#choice2").text(questions[qIndex].choices[1]);
+    $("#choice3").text(questions[qIndex].choices[2]);
+    $("#choice4").text(questions[qIndex].choices[3]);
+    console.log(questions[qIndex].choices[0]);
+    console.log(questions[qIndex].choices[1]);
+    console.log(questions[qIndex].choices[2]);
+    console.log(questions[qIndex].choices[3]);
+
+    $(".buttons").on("click", function() {
+        console.log($(this)[0].outerText);
+        if($(this)[0].outerText === questions[qIndex].answer) {
+            qIndex++
+        }
+        else {
+            timer = timer - 10;
+            qIndex++;
+        };
+    $("#question-title").text(questions[qIndex].title);
+    $("#choice1").text(questions[qIndex].choices[0]);
+    $("#choice2").text(questions[qIndex].choices[1]);
+    $("#choice3").text(questions[qIndex].choices[2]);
+    $("#choice4").text(questions[qIndex].choices[3]);
+        
+    });
 }
 
 //object array for questions and answers
@@ -66,18 +99,10 @@ var questions = [
     },
 ];
 
-//  function timer() {
-//      var sec = 75;
-//      var timer = setInterval(function(){
-//          $('timer')=sec;
-//          sec--;
-//          if (sec < 0) {
-//              clearInterval(timer);
-//          }
-//      }, 1000);
- //}
 
 //questions.title questions.choice[i] if questions.answer === answer.choice[2]
+
+//display
 
 // questions.title questions.choice[i]
 // if(questions.answer === answer.choice[2]){
