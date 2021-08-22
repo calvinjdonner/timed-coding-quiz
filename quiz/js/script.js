@@ -4,6 +4,7 @@ $("#start-button").on("click", function() {
     console.log("Quiz has begun");
     displayQuestions();
     countdown();
+    enterInitials();
 });
 
 var timerEl = document.getElementById('countdown');
@@ -46,6 +47,7 @@ function displayQuestions() {
         if(qIndex === 10){
             $("#quiz-questions").hide();
             $("#all-done").show();
+            return;
         }
 
     $("#question-title").text(questions[qIndex].title);
@@ -55,6 +57,17 @@ function displayQuestions() {
     $("#choice4").text(questions[qIndex].choices[3]);
     });
 }
+
+function enterInitials (){
+    $("#displayScore").text("Your final score is " + timer);
+    $("#goBack").on("click", function() {
+        $("#start-screen").show();
+        $("all-done").hide();
+    })
+    //$("#clearHS").on("click", function() {
+        
+    //})
+};
 
 //object array for questions and answers
 var questions = [
