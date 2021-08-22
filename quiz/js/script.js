@@ -3,16 +3,17 @@ $("#start-button").on("click", function() {
     $("#quiz-questions").show();
     console.log("Quiz has begun");
     displayQuestions();
+    countdown();
 });
 
-var timerEl = document.getElementById('countdown');
-var startBtn = document.getElementById('start-button');
+var timerEl = $("#countdown");
+var startBtn = $("#start-button");
 var qIndex = 0;
 var timer = 75;
 
 function countdown() {
     var timeInterval = setInterval(function(){
-        if(timer > 1) {
+        if(timer > 0) {
             timerEl.textContent = timer;
             timer --;
         }
@@ -39,11 +40,13 @@ function displayQuestions() {
     $(".buttons").on("click", function() {
         console.log($(this)[0].outerText);
         if($(this)[0].outerText === questions[qIndex].answer) {
-            qIndex++
+            qIndex++;
+            $("#answerConfirmation").text("Correct!");
         }
         else {
             timer = timer - 10;
             qIndex++;
+            $("#answerConfirmation").text("Incorrect!")
         };
     $("#question-title").text(questions[qIndex].title);
     $("#choice1").text(questions[qIndex].choices[0]);

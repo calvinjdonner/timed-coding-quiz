@@ -15,10 +15,9 @@
         <header>
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <a href="#high-scores" href="./html/index2.html">View high scores</a>
-                    </div>  
-                    <div id ="countdown" class="col">Time: 75
+                    <div class="col" id="viewHighScores">View high scores</div>
+                    <div class="col">Time: </div>
+                    <div id ="countdown" class="col">0
                     </div>
                 </div>
             </div>
@@ -44,14 +43,19 @@
                         <button class="buttons" id="choice3"></button>
                         <button class="buttons" id="choice4"></button>
                 </div>
+                <div class="col" id="answerConfirmation"></div>
             </div>
+        </div>
+
+        <!-- display high scores (after initals are entered or the high score "link" is clicked) -->
+        <div class="contianer">
+            <div id="highScores" style="display: none;">
+            <h1 id="highScoreDisplay"></h1>
+            <div class="col" id=""></div>
+        </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
     </body>
 </html>
-
-<!-- .hide { -->
-    <!-- display: none; -->
-<!-- } -->
