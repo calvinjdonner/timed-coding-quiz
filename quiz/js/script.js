@@ -11,6 +11,7 @@ var timerEl = document.getElementById('countdown');
 var startBtn = document.getElementById('start-button');
 var qIndex = 0;
 var timer = 75;
+var highScore = [];
 
 function countdown() {
     var timeInterval = setInterval(function(){
@@ -59,15 +60,25 @@ function displayQuestions() {
 }
 
 function enterInitials (){
-    $("#displayScore").text("Your final score is " + timer);
-    $("#goBack").on("click", function() {
-        $("#start-screen").show();
-        $("all-done").hide();
+    $("#displayScore").text("Your final score is ") //+ //time);
+    $("#submitBtn").on("click", function() {
+        console.log(this);
+        //highScores.push()
+        // $("#all-done").hide();
+        // $("#highScores").show();  
     })
-    //$("#clearHS").on("click", function() {
-        
-    //})
 };
+
+function highScore (){
+    $("#goBack").on("click", function() {
+        $("highScores").hide();
+        $("#start-screen").show();
+    })
+
+    $("#clearHS").on("click", function() {
+        highScores = [];
+    })
+}
 
 //object array for questions and answers
 var questions = [
