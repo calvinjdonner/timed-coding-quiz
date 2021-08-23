@@ -61,7 +61,7 @@ function displayQuestions() {
 };
 
 function enterInitials (){
-    $("#displayScore").text("Your final score is ") //+ //time);
+    $("#displayScore").text("Your final score is " + timer);
     $("#submitBtn").on("click", function() {
         var initials = document.getElementById('initialsInput').value;
         hsInitials["initials"] = initials;
@@ -74,6 +74,7 @@ function enterInitials (){
 };
 
 function highScorePage (){
+    $("#sortedScores").text(highScore.sort().toString());
     $("#goBack").on("click", function() {
         qIndex = 0;
         console.log(qIndex);
@@ -91,8 +92,6 @@ function highScorePage (){
         console.log(highScore);
     })
 };
-
-
 
 //object array for questions and answers
 var questions = [
