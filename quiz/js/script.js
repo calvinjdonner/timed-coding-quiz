@@ -12,10 +12,11 @@ var startBtn = document.getElementById('start-button');
 var qIndex = 0;
 var timer = 75;
 var highScore = [];
+var hsInitials = {};
 
 function countdown() {
     var timeInterval = setInterval(function(){
-        if(timer > 1) {
+        if(timer > 0 && qIndex != 10) {
             timerEl.textContent = timer;
             timer --;
         }
@@ -43,13 +44,12 @@ function displayQuestions() {
             qIndex++;
             $("#answerConfirmation").text("Incorrect!")
         };
-        console.log(qIndex);
-
+    
         if(qIndex === 10){
             $("#quiz-questions").hide();
             $("#all-done").show();
             return;
-        }
+        };
 
     $("#question-title").text(questions[qIndex].title);
     $("#choice1").text(questions[qIndex].choices[0]);
@@ -62,10 +62,15 @@ function displayQuestions() {
 function enterInitials (){
     $("#displayScore").text("Your final score is ") //+ //time);
     $("#submitBtn").on("click", function() {
-        console.log(this);
-        //highScores.push()
-        // $("#all-done").hide();
-        // $("#highScores").show();  
+        var initials = document.getElementById('initialsInput').value;
+        console.log(timer);
+        hsInitials["initials"] = initials;
+        hsInitials["timer"] = timer;
+        highScore.push(hsInitials);
+        console.log(highScore);
+        $("#all-done").hide();
+        $("#highScores").show();
+        qIndex = 0;
     })
 };
 
