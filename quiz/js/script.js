@@ -5,6 +5,7 @@ $("#start-button").on("click", function() {
     displayQuestions();
     countdown();
     enterInitials();
+    highScorePage();
 });
 
 var timerEl = document.getElementById('countdown');
@@ -27,7 +28,7 @@ function countdown() {
 }
 
 function displayQuestions() {
-    var currentQuestion = questions[qIndex];
+    //var currentQuestion = questions[qIndex];
     $("#question-title").text(questions[qIndex].title);
     $("#choice1").text(questions[qIndex].choices[0]);
     $("#choice2").text(questions[qIndex].choices[1]);
@@ -57,33 +58,41 @@ function displayQuestions() {
     $("#choice3").text(questions[qIndex].choices[2]);
     $("#choice4").text(questions[qIndex].choices[3]);
     });
-}
+};
 
 function enterInitials (){
     $("#displayScore").text("Your final score is ") //+ //time);
     $("#submitBtn").on("click", function() {
         var initials = document.getElementById('initialsInput').value;
-        console.log(timer);
         hsInitials["initials"] = initials;
         hsInitials["timer"] = timer;
         highScore.push(hsInitials);
         console.log(highScore);
         $("#all-done").hide();
         $("#highScores").show();
-        qIndex = 0;
     })
 };
 
-function highScore (){
+function highScorePage (){
     $("#goBack").on("click", function() {
-        $("highScores").hide();
+        qIndex = 0;
+        console.log(qIndex);
+        timer = 75;
+        hsInitials = {};
+        initials = "";
+        console.log(hsInitials);
+        $("#highScores").hide();
         $("#start-screen").show();
-    })
+    });
 
     $("#clearHS").on("click", function() {
-        highScores = [];
+        hsInitials = {};
+        highScore = [];
+        console.log(highScore);
     })
-}
+};
+
+
 
 //object array for questions and answers
 var questions = [
@@ -113,7 +122,7 @@ var questions = [
         answer:"ReadMe"
     },
     {   title:"What is the DOM?",
-        choices:["A copy of the HTML file","A programming interfacec for web documents", "A programming language", "Part of JavaScript"],
+        choices:["A copy of the HTML file","A programming interface for web documents", "A programming language", "Part of JavaScript"],
         answer:"A programming interfacec for web documents"
     },
     {   title:"Which of the following is true about class selectors?",
@@ -129,28 +138,3 @@ var questions = [
         answer:"<script>"
     },
 ];
-
-
-//questions.title questions.choice[i] if questions.answer === answer.choice[2]
-
-//display
-
-// questions.title questions.choice[i]
-// if(questions.answer === answer.choice[2]){
-//     //display correct message
-// }
-// else {
-//     //display wrong message
-// }
-
-//log score is just the remaining time when all questions are complete
-
-//save scores into local storage for high score list
-//timer = integer (needs to be global), set interval to deduct 1 from total integer at 1 sec intervals
-//if statement to deduct 5 secs if answered incorrectly
-//var high scores from local storage array and this display it via HTML HS page
-//local storage.set item set to value
-//if statement to display "correct" or "wrong" after answer choice is selected
-
-//high scores array of objects (high score and initials)
-//save empty array after clear high score button is pushed, use var to clear high scores
