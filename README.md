@@ -14,3 +14,5 @@ Calvin Donner
 
 ## 
 Website
+https://calvinjdonner.github.io/timed-coding-quiz/
+Screen shot of deployed page is included in the GitHub Repo in the images folder
