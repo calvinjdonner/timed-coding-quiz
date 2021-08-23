@@ -9,10 +9,9 @@ I created this timed quiz using JavaScript fundamentals that stores high scores 
 * CSS (Bootstrap)
 * JavaScript (jQuery)
 
-##Contributing
+## Contributing
 Calvin Donner
 
-## 
-Website
-https://calvinjdonner.github.io/timed-coding-quiz/
-Screen shot of deployed page is included in the GitHub Repo in the images folder
+## Website
+* https://calvinjdonner.github.io/timed-coding-quiz/
+* Screen shot of deployed page is included in the GitHub Repo in the images folder
