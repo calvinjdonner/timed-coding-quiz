@@ -4,8 +4,7 @@ $("#start-button").on("click", function() {
     console.log("Quiz has begun");
     displayQuestions();
     countdown();
-    enterInitials();
-    highScorePage();
+    
 });
 
 var timerEl = document.getElementById('countdown');
@@ -29,6 +28,7 @@ function countdown() {
 
 function displayQuestions() {
     //var currentQuestion = questions[qIndex];
+    console.log("hello " + qIndex);
     $("#question-title").text(questions[qIndex].title);
     $("#choice1").text(questions[qIndex].choices[0]);
     $("#choice2").text(questions[qIndex].choices[1]);
@@ -37,18 +37,20 @@ function displayQuestions() {
 
     $(".buttons").on("click", function() {
         if($(this)[0].outerText === questions[qIndex].answer) {
-            qIndex++;
+            qIndex = qIndex + 1;
             $("#answerConfirmation").text("Correct!");
+            console.log("howdy " + qIndex);
         }
         else {
             timer = timer - 10;
-            qIndex++;
+            qIndex = qIndex + 1;
             $("#answerConfirmation").text("Incorrect!")
         };
     
         if(qIndex === 10){
             $("#quiz-questions").hide();
             $("#all-done").show();
+            enterInitials();
             return;
         };
 
@@ -61,15 +63,16 @@ function displayQuestions() {
 };
 
 function enterInitials (){
-    $("#displayScore").text("Your final score is " + timer);
+    $("#displayScore").text("Your final score is " + $("#countdown")[0].innerHTML);
     $("#submitBtn").on("click", function() {
         var initials = document.getElementById('initialsInput').value;
         hsInitials["initials"] = initials;
-        hsInitials["timer"] = timer;
+        hsInitials["timer"] = $("#countdown")[0].innerHTML;
         highScore.push(hsInitials);
         console.log(highScore);
         $("#all-done").hide();
         $("#highScores").show();
+        highScorePage();
     })
 };
 
