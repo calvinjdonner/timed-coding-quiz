@@ -14,4 +14,4 @@ Calvin Donner
 
 ## Website
 * https://calvinjdonner.github.io/timed-coding-quiz/
-* ![](quiz/images/Timed-Quiz-Screenshot)
+* ![](quiz/images/Timed-Quiz-Screenshot.png)
